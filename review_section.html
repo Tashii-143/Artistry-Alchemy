@@ -1,36 +1,46 @@
-<section id="reviews">
-  <h2>User Reviews</h2>
-  <p>See what others think about Artistry Alchemy!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reviews</title>
+  <link href="art.css" rel="stylesheet">
+</head>
+<body>
 
-  <!-- Review submission form -->
-  <form action="#" method="post">
-    <label for="name">Your Name:</label><br>
-    <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="reviews.html">Reviews</a>
+  </nav>
 
-    <label for="review">Your Review:</label><br>
-    <textarea id="review" name="review" rows="5" placeholder="Write your review here..." required></textarea><br><br>
+  <h1>Leave a Review</h1>
 
-    <input type="submit" value="Submit Review">
+  <form id="reviewForm">
+    <input type="text" id="name" placeholder="Your name" required><br><br>
+    <textarea id="review" placeholder="Your review" required></textarea><br><br>
+    <button type="submit">Submit</button>
   </form>
 
-  <!-- List of reviews -->
-  <h3>Previous Reviews:</h3>
-  <div id="review-list">
-    <div class="review">
-      <strong>Rei:</strong>
-      <p>I love this website! It really helps me understand different art styles.</p>
-    </div>
-    <div class="review">
-      <strong>Mira Kano:</strong>
-      <p>The TTZEWO and Jelly style guides are super clear and easy to follow.</p>
-    </div>
-    <div class="review">
-      <strong>Tsuki:</strong>
-      <p>Manga practice tips are awesome! I feel more confident drawing now.</p>
-    </div>
-    <!-- Add more reviews here -->
-  </div>
-</section>
+  <h2>Reviews</h2>
+  <div id="reviews"></div>
 
-<link href="art.css" rel="stylesheet">
+  <script>
+    const form = document.getElementById("reviewForm");
+    const reviewsDiv = document.getElementById("reviews");
 
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const review = document.getElementById("review").value;
+
+      const box = document.createElement("div");
+      box.className = "review";
+      box.innerHTML = "<strong>" + name + "</strong><p>" + review + "</p>";
+
+      reviewsDiv.appendChild(box);
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
